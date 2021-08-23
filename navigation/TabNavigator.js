@@ -76,7 +76,7 @@ export default class BottomTabNavigator extends Component {
             );
           }
         })}
-        activeColor={"#ee8249"}
+        activeColor={"#91017e"}
         inactiveColor={"gray"}
       >
         <Tab.Screen

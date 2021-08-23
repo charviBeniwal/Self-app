@@ -33,7 +33,7 @@ export default class DrawerNavigator extends Component {
     return (
       <Drawer.Navigator
         drawerContentOptions={{
-          activeTintColor: "#e91e63",
+          activeTintColor: "#91017e",
           inactiveTintColor: this.state.light_theme ? "black" : "white",
           itemStyle: { marginVertical: 5 }
         }}
@@ -49,11 +49,11 @@ export default class DrawerNavigator extends Component {
           component={Profile}
           options={{ unmountOnBlur: true }}
         />
-        <Drawer.Screen
+      {/*  <Drawer.Screen
           name="Logout"
           component={Logout}
           options={{ unmountOnBlur: true }}
-        />
+      />*/}
       </Drawer.Navigator>
     );
   }

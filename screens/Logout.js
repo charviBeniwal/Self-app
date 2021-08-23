@@ -3,8 +3,15 @@ import { StyleSheet, Text, View } from "react-native";
 import firebase from "firebase";
 
 export default class Logout extends Component {
+  constructor(props){
+    super(props)
+  }
+  
   componentDidMount() {
     firebase.auth().signOut();
+   // this.props.navigation.navigate("LoadingScreen")
+   this.props.navigation.navigate("DashboardScreen")
+
   }
   render() {
     return (

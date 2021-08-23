@@ -91,8 +91,13 @@ export default class Purchase extends Component {
     keyExtractor = (item, index) => index.toString();*/
 
   increasePurchase = () => {
+    var milkPurchased= this.state.milkPurchased + 0.5
+    var milkPurchasable = this.state.credits/2;
+    if(milkPurchased > milkPurchasable){
+      milkPurchased= this.state.credits/2
+    }
     this.setState({
-      milkPurchased: this.state.milkPurchased + 0.5
+      milkPurchased: milkPurchased
     })
   }
 
@@ -138,21 +143,22 @@ export default class Purchase extends Component {
             </View>
           </View>
           <View style={styles.cardContainer}>
-            <View>
+          <View>
               <Text style={styles.credits}> CREDITS:  </Text>
               <Text style={styles.creditNo}> {this.state.credits}  </Text>
               <Text style={styles.milkPurchase}> {10 / 2} litres of milk can be Purchased</Text>
-              <Text>(1/2 litre = 1 Credits ; 1 litre = 2 Credits)</Text>
+              <Text style={styles.milkPurchase}>(1/2 litre = 1 Credits ; 1 litre = 2 Credits)</Text>
             </View>
             <View>
-              <Text>How much milk do you want to Purchase?</Text>
-              <TouchableOpacity onPress={this.increasePurchase}><Text> + </Text></TouchableOpacity>
-              <Text>{this.state.milkPurchased}</Text>
-              <TouchableOpacity onPress={this.decreasePurchase}><Text> - </Text></TouchableOpacity>
+              <Text style={styles.milkNo}>How much milk do you want to Purchase?</Text>
+              <TouchableOpacity onPress={this.increasePurchase}><Text style={styles.Quantity}> + </Text></TouchableOpacity>
+              <Text style={styles.creditNo}>{this.state.milkPurchased}</Text>
+              <TouchableOpacity onPress={this.decreasePurchase}><Text style={styles.Quantity}> - </Text></TouchableOpacity>
             </View>
             <View>
-              <Text>Total milk to be Purchased {this.state.milkPurchased} litres</Text>
-              <TouchableOpacity onPress={()=>this.props.navigation.navigate("PurchaseSummary",{credits:this.state.credits,milkPurchased: this.state.milkPurchased})}><Text>OK</Text></TouchableOpacity>
+              <Text style={styles.milkPurchase}>Total milk to be Purchased {this.state.milkPurchased} litres</Text>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate("PurchaseSummary", { credits: this.state.credits, milkPurchased: this.state.milkPurchased })}>
+                <Text style={styles.creditNo}>OK</Text></TouchableOpacity>
             </View>
           </View>
           <View style={{ flex: 0.08 }} />
@@ -227,17 +233,31 @@ const styles = StyleSheet.create({
     marginLeft: 115
   },
   creditNo: {
-    color:"#ed0559",
+    color:"#91017e",
     fontSize: RFValue(35),
     fontFamily:"Bubblegum-Sans",
     marginTop: 10,
-    marginLeft: 165
+    marginLeft: 180
   },
   milkPurchase: {
     color:"#033954",
     fontSize: RFValue(20),
     fontFamily:"Bubblegum-Sans",
     marginTop: 20,
+    marginLeft: 80
+  },
+  Quantity:{
+    color:"#033954",
+    fontSize: RFValue(20),
+    fontFamily:"Bubblegum-Sans",
+    marginTop: 20,
+    marginLeft: 180
+  },
+  milkNo:{
+    color:"#033954",
+    fontSize: RFValue(25),
+    fontFamily:"Bubblegum-Sans",
+    marginTop: 80,
     marginLeft: 80
   }
 });

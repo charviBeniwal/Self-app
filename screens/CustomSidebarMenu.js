@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { SafeAreaView, View, StyleSheet, Image } from "react-native";
+import { SafeAreaView, View, StyleSheet, Image,TouchableOpacity, Text } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 import firebase from "firebase";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 import {
   DrawerContentScrollView,
@@ -37,12 +38,41 @@ export default class CustomSidebarMenu extends Component {
         }}
       >
         <Image
-          source={require("../assets/logo.png")}
+          source={require("../assets/milk.png")}
           style={styles.sideMenuProfileIcon}
         ></Image>
         <DrawerContentScrollView {...props}>
           <DrawerItemList {...props} />
         </DrawerContentScrollView>
+        <View style={{ flex: 0.1 }}>
+          <TouchableOpacity
+            style={{
+              flexDirection: "row",
+              width: "100%",
+              height: "100%",
+            }}
+            onPress={() => {
+              this.props.navigation.navigate("DashboardScreen");
+              firebase.auth().signOut();
+            }}
+          >
+            <Ionicons
+              name="log-out-outline"
+              size={RFValue(25)}
+              iconStyle={{ paddingLeft: RFValue(10) }}
+
+            />
+            <Text
+              style={{
+                fontSize: RFValue(15),
+                fontWeight: "bold",
+                marginLeft: RFValue(30),
+              }}
+            >
+              Log Out
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }

@@ -112,7 +112,7 @@ export default class PurchaseSummary extends Component {
           <View style={styles.appTitle}>
             <View style={styles.appIcon}>
               <Image
-                source={require("../assets/logo.png")}
+                source={require("../assets/milk.png")}
                 style={styles.iconImage}
               ></Image>
             </View>
@@ -124,7 +124,7 @@ export default class PurchaseSummary extends Component {
                     : styles.appTitleText
                 }
               >
-                Dairy Lite App
+                Dairy Lite 
               </Text>
             </View>
           </View>
@@ -139,9 +139,9 @@ export default class PurchaseSummary extends Component {
 
               <View style={styles.dataContainer}>
                 <View style={styles.titleTextContainer}>
-                  <Text>Total Litres {this.props.route.params.milkPurchased}</Text>
-                  <Text>Credits left after Purchase {this.state.credits}</Text>
-                  <Text>Do you want to Proceed with this Transaction</Text>
+                  <Text style={styles.milkPurchase}>Total Litres= {this.props.route.params.milkPurchased}</Text>
+                  <Text style={styles.milkPurchase}>Credits left after purchase= {this.state.credits}</Text>
+                  <Text style={styles.milkPurchase}>Do you want to proceed with this transaction?</Text>
                 </View>
                 <View style={styles.iconContainer}>
 
@@ -162,7 +162,7 @@ export default class PurchaseSummary extends Component {
                   )}
                */
                 >
-                  <Text>OK</Text>
+                  <Text style={styles.creditNo}>OK</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
@@ -172,7 +172,7 @@ export default class PurchaseSummary extends Component {
                   }
                   }
                 >
-                  <Text>Cancel</Text>
+                  <Text style={styles.creditNo} >Cancel</Text>
                 </TouchableOpacity>
 
               </View>
@@ -187,11 +187,11 @@ export default class PurchaseSummary extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#15193c"
+    backgroundColor: "#a6f7b4"
   },
   containerLight: {
     flex: 1,
-    backgroundColor: "white"
+    backgroundColor: "#a6f7b4"
   },
   droidSafeArea: {
     marginTop: Platform.OS === "android" ? StatusBar.currentHeight : RFValue(35)
@@ -340,5 +340,19 @@ const styles = StyleSheet.create({
     fontFamily: "Bubblegum-Sans",
     fontSize: RFValue(25),
     marginLeft: RFValue(5)
+  },
+  milkPurchase: {
+    color:"#42273f",
+    fontSize: RFValue(30),
+    fontFamily:"Bubblegum-Sans",
+    marginTop: 40,
+    marginLeft: 80
+  },
+  creditNo: {
+    color:"#91017e",
+    fontSize: RFValue(25),
+    fontFamily:"Bubblegum-Sans",
+    marginTop: 10,
+    marginLeft: 40
   }
 });
